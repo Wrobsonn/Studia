@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "8ddab792-300c-4b87-8310-19b63a9ec6bd",
+		"name": "Cities",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DaneMiasto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/IS_LAB6_REST/cities/read/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"IS_LAB6_REST",
+						"cities",
+						"read",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

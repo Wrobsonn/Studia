@@ -1,0 +1,6 @@
+paths:
+  source_folder: 'Assetes/'
+  json: 'data.json'
+  jsonc: 'data_copy.json'
+  yaml: 'data_copy_yaml.yaml'
+

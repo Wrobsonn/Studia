@@ -1,0 +1,8 @@
+Praca wykonana przez : Jakub Wróbel IIST 6.15 SE  IS Poniedziałek 15:00
+
+Środowisko:
+*Platforma windows 10 Pro  
+*IntelliJ IDEA Community Edition 2022.3.3
+*Maven v18
+*Visual Studio Code
+*Postman v10.12.13
