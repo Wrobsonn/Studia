@@ -1,0 +1,32 @@
+program trzy;
+
+#include ("stdlib.hhf");
+
+static //deklaracja zmiennych
+	zmienna1: int8;
+	zmienna2: byte;
+	zmienna3: int16;
+	zmienna4: int16;
+	pom1: int16;
+	pom2: byte;
+	
+begin trzy;
+
+stdout.put("Podaj wartosc "); //komunikat
+stdin.get(zmienna1); //wpisanie zmiennej
+mov(zmienna1,al); //przypisanie zmiennej do rejestru
+mov(al,zmienna2); //przypisanie rejsetru do zmiennej bitowej
+
+stdout.put("Podana wartosc to: ",zmienna1,nl,"Podana wartosc typu byte to: ",zmienna2,nl,"Wartosc rejsetru to : ",al,nl); //wpyisanie
+
+stdout.put("Podaj liczbe ktora chcesz zamienic na system 16 "); //komunikat
+stdin.get(zmienna3); //wpisanie zmiennej
+mov(zmienna3,ax); //przypisanie zmiennej do rejsetru
+stdout.put("Liczba ",zmienna3," w systemie 16 to ",ax,nl); //wypisanie
+
+stdout.put("Podaj liczbe ktora chcesz zmienic na system 10 "); //komunikat
+stdin.get(ax); //wpisanie zmiennej do rejsetru
+mov(ax,zmienna4); //przypisanie rejestru do zmiennej
+stdout.put("Liczba ",ax,"H w systemie 10 to ",zmienna4); //wypisanie
+
+end trzy;

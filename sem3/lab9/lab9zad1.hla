@@ -1,0 +1,25 @@
+program lab9zad1;
+#include("stdlib.hhf")
+
+static
+	a :char;
+	b:int32;
+
+procedure znaki(n:int32;znak:char);
+	begin znaki;
+		for(mov(0,eax);eax<n;inc(eax)) do
+			stdout.put(znak);
+			exitif(eax==n) znaki;
+		endfor;
+	end znaki;
+
+begin lab9zad1;
+	stdout.put("jaki ma to byc znak ? ");
+	stdin.get(a);
+	
+	stdout.put("Ile znakow chcesz wydrukowac ? ");
+	stdin.get(b);
+	
+	znaki( b,a );
+
+end lab9zad1;

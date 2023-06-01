@@ -1,0 +1,67 @@
+program lab6zad1;
+	
+	#include("stdlib.hhf");
+
+static
+	zmienna: int8; //zadeklarowanie zmiennej
+
+begin lab6zad1;
+	stdout.put("Mnozenie",nl); //informacja
+	mov(3,bl); //przypisanie wartosci do rejestru
+	mov(2,ax); //przypisanie wartosci do rejestru
+	mul(bl); //mnozenie
+	stdout.puti16(ax); //wypisanie mnozenia
+stdout.put(nl);//przypisanie wartosci do rejestru
+	mov(-2,ax);//przypisanie wartosci do rejestru
+	mov(3,zmienna);
+	imul(zmienna); //mnozenie
+	stdout.puti16(ax); //wypisanie mnozenia
+stdout.put(nl);
+	mov(2,eax);//przypisanie wartosci do rejestru
+	intmul(4,eax); //mnozenie
+	stdout.puti32(eax); //wypisanie mnozenia
+stdout.put(nl,nl,"Dzielenie",nl);	
+	mov(7,ax); //przypisanie wartosci do rejestru
+	mov(2,bl);//przypisanie wartosci do rejestru
+	stdout.put(ax:1, "/",bl:1,"=",nl); //informacja
+	div(bl);//dzielenie
+	stdout.put("iloraz calkowity: ");//informacja
+	stdout.puti8(al); //wypisanie
+	stdout.newln();
+	stdout.put("reszta calkowita: ");//informacja
+	stdout.puti8(ah);//wypisanie
+	
+	stdout.put(nl);
+	
+	mov(17, ax);//przypisanie wartosci do rejestru
+	mov(-7, bl);//przypisanie wartosci do rejestru
+	stdout.put("17/-7=",nl);//informacja
+	idiv(bl); //dzielenie
+	stdout.put("iloraz calkowity: "); //informacja
+	stdout.puti8(al); //wypisanie 
+	stdout.newln();
+	stdout.put("reszta calkowita: "); //informacja
+	stdout.puti8(ah);//wypisanie
+	
+	stdout.put(nl,nl,"Przesuniecie bitowe",nl);
+	stdout.put("Dla liczby 8",nl); //informacja
+	mov(8, al); //przypisanie wartosci do rejestru
+	shl(2, al); //przesuniecie o 2 w lewo
+	stdout.put("Wynik przesuniecia o 2 w lewo: ");
+	stdout.puti8(al);
+	stdout.put(nl);
+	
+	stdout.put("Dla liczby 8",nl);
+	mov (8, al);
+	shr(2, al);//przesuniecie o 2 w lewo
+	stdout.put("Wynik przesuniecia o 2 w prawo: ");
+	stdout.puti8(al);
+	stdout.put(nl);
+	
+	stdout.put("Dla liczby -8",nl);
+	mov(-8, al);
+	sar(2, al);//przesuniecie o 2 w prawo liczy ujemnej
+	stdout.put("Wynik przesuniecia o 2 w prawo: ");
+	stdout.puti8(al);
+	
+end lab6zad1;

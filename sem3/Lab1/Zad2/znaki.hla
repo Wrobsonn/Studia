@@ -1,0 +1,15 @@
+program znaki; //nazwa programu
+
+#include ("stdlib.hhf"); //deklaracja biblioteki
+
+static	//deklaracja zmiennych
+	znak1:char :='A';	
+	znak2:char;
+
+begin znaki; //rozpoczecie programu
+ 
+	stdout.put("Podaj znak ");
+	stdin.get(znak2); //pobranie znaku
+	stdout.put("Znak staly ",znak1,nl,"Wprowadzony znak ",znak2); //wypisanie znakow;
+
+end znaki; //zakonczenie programu

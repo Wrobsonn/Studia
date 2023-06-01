@@ -1,0 +1,103 @@
+/**
+
+                            Online Swift Compiler.
+                Code, Compile, Run and Debug Swift script online.
+Write your code in this editor and press "Run" button to execute it.
+
+*/
+/*
+print("zad1")
+var osoba = ("Jan","Kowalski",42)
+var osoba1 = ("Janusz","Kot",41)
+
+if( osoba.2 > osoba1.2){
+    print("\(osoba.0) \(osoba.1) jest starsza")}
+else if( osoba.2 < osoba1.2){
+    print("\(osoba.0) \(osoba.1) jest mlodsza")}
+else{
+    print("osoby sa w tym samym wieku")
+    }
+
+print("zad2")
+enum ocena {
+case trzy(Double, Double, Double)
+}
+
+var student:[ (nazwisko:String, mark1:ocena)] = []
+
+*/
+print("zad3")
+
+print("Podaj liczbe mieszkan")
+var n=Int(readLine()!)!
+var lok : String
+var prize : Double
+var meter : Double
+var mieszkanie:[(lokalizacja: String,metraz:Double,cena:Double)]=[]
+for i in 0...n-1{
+    print("Podaj lokalizacje")
+    lok = readLine()!
+    print("Podaj metraz")
+    meter = Double(readLine()!)!
+    print("Podaj cene za metr")
+    prize = Double(readLine()!)!
+
+    mieszkanie.append((lokalizacja:lok,metraz:meter,cena:prize))
+}
+
+var max = mieszkanie[0].metraz*mieszkanie[0].cena
+var index = 0
+for i in 1...n-1{
+    if(max < mieszkanie[i].metraz*mieszkanie[i].cena){
+        max = mieszkanie[i].metraz*mieszkanie[i].cena
+        index = i
+    }
+}
+
+print("Najdrozsze mieszkanie to mieszkanie \(index)")
+
+print("zad 4")
+enum Miesiac{
+case styczen
+case luty
+case marzec
+case kwiecien
+case maj
+case czerwiec
+case lipiec
+case sierpien
+case wrzesien
+case pazdziernik
+case listopad
+case grudzien
+}
+
+var miesiac = Miesiac.styczen
+
+switch miesiac {
+case .styczen:
+print("Zima")
+case .luty:
+print("Zima")
+case .marzec:
+print("Wiosna")
+case .kwiecien:
+print("Wiosna")
+case .maj:
+print("Wiosna")
+case .czerwiec:
+print("Lato")
+case .lipiec:
+print("Lato")
+case .sierpien:
+print("Lato")
+case .wrzesien:
+print("Jesien")
+case .pazdziernik:
+print("Jesien")
+case .listopad:
+print("Jesien")
+case .grudzen:
+print("Zima")
+
+}

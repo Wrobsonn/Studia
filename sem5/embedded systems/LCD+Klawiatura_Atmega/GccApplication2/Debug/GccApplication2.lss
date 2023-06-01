@@ -1,0 +1,496 @@
+
+GccApplication2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000029c  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000022  00800060  0000029c  00000310  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000332  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000364  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000090  00000000  00000000  000003a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000bca  00000000  00000000  00000430  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000864  00000000  00000000  00000ffa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000066a  00000000  00000000  0000185e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000fc  00000000  00000000  00001ec8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003c5  00000000  00000000  00001fc4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000476  00000000  00000000  00002389  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000060  00000000  00000000  000027ff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ec e9       	ldi	r30, 0x9C	; 156
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 38       	cpi	r26, 0x82	; 130
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a2 e8       	ldi	r26, 0x82	; 130
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a2 38       	cpi	r26, 0x82	; 130
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 0b 01 	call	0x216	; 0x216 <main>
+  8a:	0c 94 4c 01 	jmp	0x298	; 0x298 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <init>:
+#include "LCD.h"
+/* Replace with your library code */
+
+
+void init(char chose){ // funkcja inicjalizacji (do ktorego portu podpieto klawiature)
+	switch (chose){ // uzycie struktury switch
+  92:	82 30       	cpi	r24, 0x02	; 2
+  94:	49 f0       	breq	.+18     	; 0xa8 <init+0x16>
+  96:	83 30       	cpi	r24, 0x03	; 3
+  98:	61 f0       	breq	.+24     	; 0xb2 <init+0x20>
+  9a:	81 30       	cpi	r24, 0x01	; 1
+  9c:	79 f4       	brne	.+30     	; 0xbc <init+0x2a>
+	case 1: //inicjalizacja portu A
+		DDRA = 0xF0;
+  9e:	80 ef       	ldi	r24, 0xF0	; 240
+  a0:	8a bb       	out	0x1a, r24	; 26
+		PORTA = 0x0F;
+  a2:	8f e0       	ldi	r24, 0x0F	; 15
+  a4:	8b bb       	out	0x1b, r24	; 27
+		break;
+  a6:	08 95       	ret
+	case 2: //inicjalizacja portu C
+		DDRC = 0xF0;
+  a8:	80 ef       	ldi	r24, 0xF0	; 240
+  aa:	84 bb       	out	0x14, r24	; 20
+		PORTC = 0x0F;
+  ac:	8f e0       	ldi	r24, 0x0F	; 15
+  ae:	85 bb       	out	0x15, r24	; 21
+		break;
+  b0:	08 95       	ret
+	case 3: // inicjalizacja portu D
+		DDRD = 0xF0;
+  b2:	80 ef       	ldi	r24, 0xF0	; 240
+  b4:	81 bb       	out	0x11, r24	; 17
+		PORTD = 0x0F;
+  b6:	8f e0       	ldi	r24, 0x0F	; 15
+  b8:	82 bb       	out	0x12, r24	; 18
+		break;
+  ba:	08 95       	ret
+	default: // default ti port A
+		DDRA = 0xF0;
+  bc:	80 ef       	ldi	r24, 0xF0	; 240
+  be:	8a bb       	out	0x1a, r24	; 26
+		PORTA = 0x0F;
+  c0:	8f e0       	ldi	r24, 0x0F	; 15
+  c2:	8b bb       	out	0x1b, r24	; 27
+  c4:	08 95       	ret
+
+000000c6 <czytaj_klawiature>:
+volatile unsigned char klawisz;
+
+unsigned char czytaj_klawiature(char malaKla) //funkcja zczytujaca klawisz
+{
+	unsigned char wiersz, kolumna, key;
+	if(malaKla){ // warunek na mala klawiature
+  c6:	88 23       	and	r24, r24
+  c8:	d1 f0       	breq	.+52     	; 0xfe <czytaj_klawiature+0x38>
+		PORTA = 0xEF;
+  ca:	8f ee       	ldi	r24, 0xEF	; 239
+  cc:	8b bb       	out	0x1b, r24	; 27
+		key=1;
+  ce:	81 e0       	ldi	r24, 0x01	; 1
+		for(wiersz=0x01; wiersz <= 0x08; wiersz <<=1,key++) // przejscie po wszystkich klawiszach malej klawiatury
+  d0:	91 e0       	ldi	r25, 0x01	; 1
+  d2:	05 c0       	rjmp	.+10     	; 0xde <czytaj_klawiature+0x18>
+			if(!(PINA&wiersz)) //sprawdzenie czy klawisz jest wcisniety
+  d4:	29 b3       	in	r18, 0x19	; 25
+  d6:	29 23       	and	r18, r25
+  d8:	b9 f0       	breq	.+46     	; 0x108 <czytaj_klawiature+0x42>
+{
+	unsigned char wiersz, kolumna, key;
+	if(malaKla){ // warunek na mala klawiature
+		PORTA = 0xEF;
+		key=1;
+		for(wiersz=0x01; wiersz <= 0x08; wiersz <<=1,key++) // przejscie po wszystkich klawiszach malej klawiatury
+  da:	99 0f       	add	r25, r25
+  dc:	8f 5f       	subi	r24, 0xFF	; 255
+  de:	99 30       	cpi	r25, 0x09	; 9
+  e0:	c8 f3       	brcs	.-14     	; 0xd4 <czytaj_klawiature+0xe>
+		for (wiersz=0x01; wiersz<=0x08; wiersz<<=1, key++) // przejscie po wszystkich wierszach duzej klawiatury
+		if(!(PINA  & wiersz)) // spawdzenie czy klawisz jest klikniety
+			return key; // wysiwetlenie klawisza
+	}
+	}
+	return 0;
+  e2:	80 e0       	ldi	r24, 0x00	; 0
+  e4:	08 95       	ret
+				return key; //zwrocenie klawisza
+	}
+	else{ //warunek na cala klawiature
+	for(kolumna=0xEF, key=1; kolumna>= 0x71; (kolumna<<=1 | 0x01) &0xFF ) //przejscie po wszystkich kolumnach duzej klawiatury
+	{
+		PORTA = kolumna;
+  e6:	3b bb       	out	0x1b, r19	; 27
+		for (wiersz=0x01; wiersz<=0x08; wiersz<<=1, key++) // przejscie po wszystkich wierszach duzej klawiatury
+  e8:	91 e0       	ldi	r25, 0x01	; 1
+  ea:	05 c0       	rjmp	.+10     	; 0xf6 <czytaj_klawiature+0x30>
+		if(!(PINA  & wiersz)) // spawdzenie czy klawisz jest klikniety
+  ec:	29 b3       	in	r18, 0x19	; 25
+  ee:	29 23       	and	r18, r25
+  f0:	59 f0       	breq	.+22     	; 0x108 <czytaj_klawiature+0x42>
+	}
+	else{ //warunek na cala klawiature
+	for(kolumna=0xEF, key=1; kolumna>= 0x71; (kolumna<<=1 | 0x01) &0xFF ) //przejscie po wszystkich kolumnach duzej klawiatury
+	{
+		PORTA = kolumna;
+		for (wiersz=0x01; wiersz<=0x08; wiersz<<=1, key++) // przejscie po wszystkich wierszach duzej klawiatury
+  f2:	99 0f       	add	r25, r25
+  f4:	8f 5f       	subi	r24, 0xFF	; 255
+  f6:	99 30       	cpi	r25, 0x09	; 9
+  f8:	c8 f3       	brcs	.-14     	; 0xec <czytaj_klawiature+0x26>
+		for(wiersz=0x01; wiersz <= 0x08; wiersz <<=1,key++) // przejscie po wszystkich klawiszach malej klawiatury
+			if(!(PINA&wiersz)) //sprawdzenie czy klawisz jest wcisniety
+				return key; //zwrocenie klawisza
+	}
+	else{ //warunek na cala klawiature
+	for(kolumna=0xEF, key=1; kolumna>= 0x71; (kolumna<<=1 | 0x01) &0xFF ) //przejscie po wszystkich kolumnach duzej klawiatury
+  fa:	33 0f       	add	r19, r19
+  fc:	02 c0       	rjmp	.+4      	; 0x102 <czytaj_klawiature+0x3c>
+  fe:	81 e0       	ldi	r24, 0x01	; 1
+ 100:	3f ee       	ldi	r19, 0xEF	; 239
+ 102:	31 37       	cpi	r19, 0x71	; 113
+ 104:	80 f7       	brcc	.-32     	; 0xe6 <czytaj_klawiature+0x20>
+		for (wiersz=0x01; wiersz<=0x08; wiersz<<=1, key++) // przejscie po wszystkich wierszach duzej klawiatury
+		if(!(PINA  & wiersz)) // spawdzenie czy klawisz jest klikniety
+			return key; // wysiwetlenie klawisza
+	}
+	}
+	return 0;
+ 106:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 108:	08 95       	ret
+
+0000010a <cmd>:
+		ustaw(x,y); // wywikabue funkcji ustawiajacej kursor w podanej pozycji
+		cmd(' '); // wyslanie polecenia czyszczacego
+		y++; // przejscie do nastepnego znaku
+		_delay_ms(50);
+	}
+}
+ 10a:	98 b3       	in	r25, 0x18	; 24
+ 10c:	92 60       	ori	r25, 0x02	; 2
+ 10e:	98 bb       	out	0x18, r25	; 24
+ 110:	98 b3       	in	r25, 0x18	; 24
+ 112:	28 2f       	mov	r18, r24
+ 114:	20 7f       	andi	r18, 0xF0	; 240
+ 116:	9f 70       	andi	r25, 0x0F	; 15
+ 118:	92 2b       	or	r25, r18
+ 11a:	98 bb       	out	0x18, r25	; 24
+ 11c:	98 b3       	in	r25, 0x18	; 24
+ 11e:	9d 7f       	andi	r25, 0xFD	; 253
+ 120:	98 bb       	out	0x18, r25	; 24
+ 122:	00 00       	nop
+ 124:	98 b3       	in	r25, 0x18	; 24
+ 126:	92 60       	ori	r25, 0x02	; 2
+ 128:	98 bb       	out	0x18, r25	; 24
+ 12a:	20 e1       	ldi	r18, 0x10	; 16
+ 12c:	82 9f       	mul	r24, r18
+ 12e:	c0 01       	movw	r24, r0
+ 130:	11 24       	eor	r1, r1
+ 132:	98 b3       	in	r25, 0x18	; 24
+ 134:	9f 70       	andi	r25, 0x0F	; 15
+ 136:	89 2b       	or	r24, r25
+ 138:	88 bb       	out	0x18, r24	; 24
+ 13a:	88 b3       	in	r24, 0x18	; 24
+ 13c:	8d 7f       	andi	r24, 0xFD	; 253
+ 13e:	88 bb       	out	0x18, r24	; 24
+ 140:	80 e1       	ldi	r24, 0x10	; 16
+ 142:	8a 95       	dec	r24
+ 144:	f1 f7       	brne	.-4      	; 0x142 <cmd+0x38>
+ 146:	00 c0       	rjmp	.+0      	; 0x148 <cmd+0x3e>
+ 148:	08 95       	ret
+
+0000014a <ini>:
+ 14a:	83 ef       	ldi	r24, 0xF3	; 243
+ 14c:	87 bb       	out	0x17, r24	; 23
+ 14e:	18 ba       	out	0x18, r1	; 24
+ 150:	88 b3       	in	r24, 0x18	; 24
+ 152:	8e 7f       	andi	r24, 0xFE	; 254
+ 154:	88 bb       	out	0x18, r24	; 24
+ 156:	88 e2       	ldi	r24, 0x28	; 40
+ 158:	0e 94 85 00 	call	0x10a	; 0x10a <cmd>
+ 15c:	88 b3       	in	r24, 0x18	; 24
+ 15e:	81 60       	ori	r24, 0x01	; 1
+ 160:	88 bb       	out	0x18, r24	; 24
+ 162:	88 b3       	in	r24, 0x18	; 24
+ 164:	81 60       	ori	r24, 0x01	; 1
+ 166:	88 bb       	out	0x18, r24	; 24
+ 168:	86 e0       	ldi	r24, 0x06	; 6
+ 16a:	0e 94 85 00 	call	0x10a	; 0x10a <cmd>
+ 16e:	88 b3       	in	r24, 0x18	; 24
+ 170:	81 60       	ori	r24, 0x01	; 1
+ 172:	88 bb       	out	0x18, r24	; 24
+ 174:	88 b3       	in	r24, 0x18	; 24
+ 176:	8e 7f       	andi	r24, 0xFE	; 254
+ 178:	88 bb       	out	0x18, r24	; 24
+ 17a:	8c e0       	ldi	r24, 0x0C	; 12
+ 17c:	0e 94 85 00 	call	0x10a	; 0x10a <cmd>
+ 180:	88 b3       	in	r24, 0x18	; 24
+ 182:	81 60       	ori	r24, 0x01	; 1
+ 184:	88 bb       	out	0x18, r24	; 24
+ 186:	08 95       	ret
+
+00000188 <czysc>:
+ 188:	88 b3       	in	r24, 0x18	; 24
+ 18a:	8e 7f       	andi	r24, 0xFE	; 254
+ 18c:	88 bb       	out	0x18, r24	; 24
+ 18e:	81 e0       	ldi	r24, 0x01	; 1
+ 190:	0e 94 85 00 	call	0x10a	; 0x10a <cmd>
+ 194:	88 b3       	in	r24, 0x18	; 24
+ 196:	81 60       	ori	r24, 0x01	; 1
+ 198:	88 bb       	out	0x18, r24	; 24
+ 19a:	83 ed       	ldi	r24, 0xD3	; 211
+ 19c:	90 e3       	ldi	r25, 0x30	; 48
+ 19e:	01 97       	sbiw	r24, 0x01	; 1
+ 1a0:	f1 f7       	brne	.-4      	; 0x19e <czysc+0x16>
+ 1a2:	00 c0       	rjmp	.+0      	; 0x1a4 <czysc+0x1c>
+ 1a4:	00 00       	nop
+ 1a6:	08 95       	ret
+
+000001a8 <ustaw>:
+ 1a8:	98 b3       	in	r25, 0x18	; 24
+ 1aa:	9e 7f       	andi	r25, 0xFE	; 254
+ 1ac:	98 bb       	out	0x18, r25	; 24
+ 1ae:	90 e4       	ldi	r25, 0x40	; 64
+ 1b0:	89 9f       	mul	r24, r25
+ 1b2:	60 0d       	add	r22, r0
+ 1b4:	11 24       	eor	r1, r1
+ 1b6:	86 2f       	mov	r24, r22
+ 1b8:	80 68       	ori	r24, 0x80	; 128
+ 1ba:	0e 94 85 00 	call	0x10a	; 0x10a <cmd>
+ 1be:	88 b3       	in	r24, 0x18	; 24
+ 1c0:	81 60       	ori	r24, 0x01	; 1
+ 1c2:	88 bb       	out	0x18, r24	; 24
+ 1c4:	81 ee       	ldi	r24, 0xE1	; 225
+ 1c6:	94 e0       	ldi	r25, 0x04	; 4
+ 1c8:	01 97       	sbiw	r24, 0x01	; 1
+ 1ca:	f1 f7       	brne	.-4      	; 0x1c8 <ustaw+0x20>
+ 1cc:	00 c0       	rjmp	.+0      	; 0x1ce <ustaw+0x26>
+ 1ce:	00 00       	nop
+ 1d0:	08 95       	ret
+
+000001d2 <wyswietl>:
+
+void wyswietl(char *tekst, int8_t dlugosc) //funkcja wyswietlajaca tekst
+{
+ 1d2:	0f 93       	push	r16
+ 1d4:	1f 93       	push	r17
+ 1d6:	cf 93       	push	r28
+ 1d8:	df 93       	push	r29
+ 1da:	8c 01       	movw	r16, r24
+ 1dc:	d6 2f       	mov	r29, r22
+	int8_t i=0;
+	ustaw(0,0); // ustaw kursor na pierwszy znak pierwszej lioni
+ 1de:	60 e0       	ldi	r22, 0x00	; 0
+ 1e0:	80 e0       	ldi	r24, 0x00	; 0
+ 1e2:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <ustaw>
+	}
+}
+
+void wyswietl(char *tekst, int8_t dlugosc) //funkcja wyswietlajaca tekst
+{
+	int8_t i=0;
+ 1e6:	c0 e0       	ldi	r28, 0x00	; 0
+	ustaw(0,0); // ustaw kursor na pierwszy znak pierwszej lioni
+	while(i<dlugosc) // przejscie po wszystkich znakach tekstu
+ 1e8:	0f c0       	rjmp	.+30     	; 0x208 <wyswietl+0x36>
+	{
+		if(i==16) // jesli trafi na ostatni znak lini zmien linie
+ 1ea:	c0 31       	cpi	r28, 0x10	; 16
+ 1ec:	21 f4       	brne	.+8      	; 0x1f6 <wyswietl+0x24>
+		{
+			ustaw(1,0);
+ 1ee:	60 e0       	ldi	r22, 0x00	; 0
+ 1f0:	81 e0       	ldi	r24, 0x01	; 1
+ 1f2:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <ustaw>
+		}
+		cmd(tekst[i]); // wypisz i-ty znak tekstu
+ 1f6:	f8 01       	movw	r30, r16
+ 1f8:	ec 0f       	add	r30, r28
+ 1fa:	f1 1d       	adc	r31, r1
+ 1fc:	c7 fd       	sbrc	r28, 7
+ 1fe:	fa 95       	dec	r31
+ 200:	80 81       	ld	r24, Z
+ 202:	0e 94 85 00 	call	0x10a	; 0x10a <cmd>
+		i++; // inkrementacja
+ 206:	cf 5f       	subi	r28, 0xFF	; 255
+
+void wyswietl(char *tekst, int8_t dlugosc) //funkcja wyswietlajaca tekst
+{
+	int8_t i=0;
+	ustaw(0,0); // ustaw kursor na pierwszy znak pierwszej lioni
+	while(i<dlugosc) // przejscie po wszystkich znakach tekstu
+ 208:	cd 17       	cp	r28, r29
+ 20a:	7c f3       	brlt	.-34     	; 0x1ea <wyswietl+0x18>
+			ustaw(1,0);
+		}
+		cmd(tekst[i]); // wypisz i-ty znak tekstu
+		i++; // inkrementacja
+	}
+ 20c:	df 91       	pop	r29
+ 20e:	cf 91       	pop	r28
+ 210:	1f 91       	pop	r17
+ 212:	0f 91       	pop	r16
+ 214:	08 95       	ret
+
+00000216 <main>:
+#include "klawiatura.h"
+
+
+
+int main(void)
+{
+ 216:	cf 93       	push	r28
+ 218:	df 93       	push	r29
+ 21a:	cd b7       	in	r28, 0x3d	; 61
+ 21c:	de b7       	in	r29, 0x3e	; 62
+ 21e:	a2 97       	sbiw	r28, 0x22	; 34
+ 220:	0f b6       	in	r0, 0x3f	; 63
+ 222:	f8 94       	cli
+ 224:	de bf       	out	0x3e, r29	; 62
+ 226:	0f be       	out	0x3f, r0	; 63
+ 228:	cd bf       	out	0x3d, r28	; 61
+
+	DDRB =0xFF;
+ 22a:	8f ef       	ldi	r24, 0xFF	; 255
+ 22c:	87 bb       	out	0x17, r24	; 23
+	DDRD|= 0x03;
+ 22e:	81 b3       	in	r24, 0x11	; 17
+ 230:	83 60       	ori	r24, 0x03	; 3
+ 232:	81 bb       	out	0x11, r24	; 17
+	char liczba [17][2] = {" 0"," 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9","10","11","12","13","14","15","16"};
+ 234:	82 e2       	ldi	r24, 0x22	; 34
+ 236:	e0 e6       	ldi	r30, 0x60	; 96
+ 238:	f0 e0       	ldi	r31, 0x00	; 0
+ 23a:	de 01       	movw	r26, r28
+ 23c:	11 96       	adiw	r26, 0x01	; 1
+ 23e:	01 90       	ld	r0, Z+
+ 240:	0d 92       	st	X+, r0
+ 242:	8a 95       	dec	r24
+ 244:	e1 f7       	brne	.-8      	; 0x23e <main+0x28>
+	ini();
+ 246:	0e 94 a5 00 	call	0x14a	; 0x14a <ini>
+	init(1);
+ 24a:	81 e0       	ldi	r24, 0x01	; 1
+ 24c:	0e 94 49 00 	call	0x92	; 0x92 <init>
+	unsigned char k = 0;
+	while (1)
+	{
+		
+		
+		k=czytaj_klawiature(0);
+ 250:	80 e0       	ldi	r24, 0x00	; 0
+ 252:	0e 94 63 00 	call	0xc6	; 0xc6 <czytaj_klawiature>
+		wyswietl(liczba[k],2);
+ 256:	90 e0       	ldi	r25, 0x00	; 0
+ 258:	88 0f       	add	r24, r24
+ 25a:	99 1f       	adc	r25, r25
+ 25c:	62 e0       	ldi	r22, 0x02	; 2
+ 25e:	21 e0       	ldi	r18, 0x01	; 1
+ 260:	30 e0       	ldi	r19, 0x00	; 0
+ 262:	2c 0f       	add	r18, r28
+ 264:	3d 1f       	adc	r19, r29
+ 266:	82 0f       	add	r24, r18
+ 268:	93 1f       	adc	r25, r19
+ 26a:	0e 94 e9 00 	call	0x1d2	; 0x1d2 <wyswietl>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 26e:	3f e9       	ldi	r19, 0x9F	; 159
+ 270:	86 e8       	ldi	r24, 0x86	; 134
+ 272:	91 e0       	ldi	r25, 0x01	; 1
+ 274:	31 50       	subi	r19, 0x01	; 1
+ 276:	80 40       	sbci	r24, 0x00	; 0
+ 278:	90 40       	sbci	r25, 0x00	; 0
+ 27a:	e1 f7       	brne	.-8      	; 0x274 <main+0x5e>
+ 27c:	00 c0       	rjmp	.+0      	; 0x27e <main+0x68>
+ 27e:	00 00       	nop
+		_delay_ms(500);
+		czysc();
+ 280:	0e 94 c4 00 	call	0x188	; 0x188 <czysc>
+ 284:	2f e9       	ldi	r18, 0x9F	; 159
+ 286:	36 e8       	ldi	r19, 0x86	; 134
+ 288:	81 e0       	ldi	r24, 0x01	; 1
+ 28a:	21 50       	subi	r18, 0x01	; 1
+ 28c:	30 40       	sbci	r19, 0x00	; 0
+ 28e:	80 40       	sbci	r24, 0x00	; 0
+ 290:	e1 f7       	brne	.-8      	; 0x28a <main+0x74>
+ 292:	00 c0       	rjmp	.+0      	; 0x294 <main+0x7e>
+ 294:	00 00       	nop
+ 296:	dc cf       	rjmp	.-72     	; 0x250 <main+0x3a>
+
+00000298 <_exit>:
+ 298:	f8 94       	cli
+
+0000029a <__stop_program>:
+ 29a:	ff cf       	rjmp	.-2      	; 0x29a <__stop_program>

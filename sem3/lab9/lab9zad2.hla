@@ -1,0 +1,28 @@
+program lab9zad2;
+#include("stdlib.hhf")
+#include("kalkulator.hhf")
+static
+	a:int32;
+	b:int32;
+	i:int32;
+begin lab9zad2;
+	stdout.put("podaj 1 liczbe ");
+	stdin.get(a);
+	stdout.put("podaj 2 liczbe ");
+	stdin.get(b);
+	
+	stdout.put("Chcesz te liczby 1- dodac 2- odjac  3- podzielic  4- pomnozyc ");
+	stdin.get(i);
+	if(i==1) then
+			dodawanie(a,b);
+		else if(i==2) then
+			odejmowanie(a,b);
+		else if(i==3) then
+			dzielenie(a,b);
+		else if(i==4) then
+			mnozenie(a,b);
+		else
+			stdout.put("Brak polecneia");
+	endif;
+
+end lab9zad2;

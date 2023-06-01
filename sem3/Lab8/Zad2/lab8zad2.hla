@@ -1,0 +1,49 @@
+program z1;
+
+	#include ("stdlib.hhf");
+
+static //deklaracja zmiennych globalnych
+	i:int32 :=100;
+	j:int32 :=200;
+
+
+procedure wypisz;
+begin wypisz;
+		
+		for(mov(0,ECX);ECX<40;inc(ECX))do
+			stdout.put(" ");
+		endfor;
+		stdout.put("*");
+	end wypisz;
+
+procedure wypisz1; //deklaracja procedury
+	var //deklaracja zmiennych lokalnych
+		i:int32;
+		j:int32;
+	begin wypisz1;//rozpoczenie preocedury
+		mov(0,i);
+		stdout.put("Operacje na zmiennych lokalnych ",nl);
+		for(mov(10,j);j>=0;dec(j))do
+			stdout.put("i=",i,"		j=",j,nl);
+			inc(i);
+		endfor;
+
+	end wypisz1;//koniec procedury
+
+begin z1;
+	
+	mov(0,ECX);
+	repeat
+		push(ECX); //przypisanie rejestru do stosu
+		wypisz(); //uzycie proedury
+		mov([ESP],ECX); //przypisanie wartosci ze stosu do rejestru 
+		pop(ECX); //zdjecie rejestru ze stosu
+		stdout.put(nl);
+		inc(ECX); 
+	until(ECX>19);
+	
+	wypisz1();//uzycie preocedury
+	stdout.put("Zmienne globalne ",nl);
+	stdout.put("i=",i,"		j=",j,nl);	
+		
+end z1;

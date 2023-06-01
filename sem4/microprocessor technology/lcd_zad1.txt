@@ -1,0 +1,99 @@
+#include <avr/io.h>
+#include <util/delay.h>
+
+#define LCD_DDR DDRB
+#define LCD_PORT PORTB
+#define LCD_RS PB1
+#define LCD_EN PB0
+#define LCD_DB4 PB4
+#define LCD_DB5 PB5
+#define LCD_DB6 PB6
+#define LCD_DB7 PB7
+
+void cmd(uint8_t komenda)
+{
+	LCD_PORT |=1<<LCD_EN;
+	LCD_PORT = (komenda & 0xF0) | (LCD_PORT & 0x0F);
+	LCD_PORT &= ~(1<<LCD_EN);
+	asm volatile("nop");
+	LCD_PORT |=1<<LCD_EN;
+	LCD_PORT = ((komenda & 0x0F)<<4) | (LCD_PORT & 0x0F);
+	LCD_PORT &= ~(1<<LCD_EN);
+	_delay_us(50);
+}
+
+void ini()
+{
+	LCD_DDR = (0xF0) | (1<<LCD_RS) | (1<<LCD_EN);
+	LCD_PORT = 0;
+	LCD_PORT &= ~(1<<LCD_RS);
+	cmd(0b00101000);
+	LCD_PORT |= 1<<LCD_RS;
+	LCD_PORT |= 1<<LCD_RS;
+	cmd(0b00000110);
+	LCD_PORT |=1<<LCD_RS;
+	LCD_PORT &=~(1<<LCD_RS);
+	cmd(0b00001100);
+	LCD_PORT |= 1<<LCD_RS;
+}
+
+void czysc()
+{
+	LCD_PORT &= ~(1<<LCD_RS);
+	cmd(0x01);
+	LCD_PORT |= 1<<LCD_RS;
+	_delay_ms(50);
+}
+
+void ustaw(unsigned char x, unsigned char y )
+{
+	LCD_PORT &=~(1<<LCD_RS);
+	cmd((x*0x40+y) | 0x80);
+	LCD_PORT |= 1<<LCD_RS;
+	_delay_ms(5);
+}
+
+void czysc_y(int8_t x, int8_t y)
+{
+	while(y<16)
+		{
+		ustaw(x,y);
+		cmd(' ');
+		y++;
+		_delay_ms(50);
+		}
+}
+
+void wyswietl(char *tekst, int8_t dlugosc)
+{
+	int8_t i=0;
+	ustaw(0,0);
+	while(i<dlugosc)
+	{
+		if(i==16)
+		{
+			ustaw(1,0);
+		}
+		cmd(tekst[i]);
+		i++;
+	}
+}
+
+int main(void)
+{
+	
+	DDRB=0xF0;
+	char tekst[]={'T','E','S','T',' ','T','E','S','T',' ','T','E','S','T',' ','T','E','S','T'};
+	ini();
+    while (1) 
+    {
+		//cmd('A');
+		wyswietl(tekst,19);
+		_delay_ms(1000);
+		//czysc();
+		czysc_y(0,6);
+		_delay_ms(1000);
+		
+    }
+}
+

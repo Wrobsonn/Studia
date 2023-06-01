@@ -1,0 +1,41 @@
+program trzy;
+
+#include ("stdlib.hhf");
+
+static //deklaracja zmiennych
+	a: int8;
+	b: int8;
+	c: int16;
+	
+begin trzy;
+
+stdout.put("Podaj liczbe z zakresu -128, 127 ");
+stdin.get(a);
+mov(a,al);
+mov(0,b);
+mov(0,ah);
+
+repeat
+	sub(ah,al);
+	mov(al,a);
+	add(1,ah);
+until(a<=0);	
+mov(ah,b);
+
+forever
+	breakif(b<=0);
+	sub(3,ah);
+	mov(ah,b);
+endfor;
+
+
+try
+	stdout.put(nl,"Podaj liczbe",nl);
+	stdin.get(b);
+	exception(ex.ConversionError)
+	stdout.put("To nie liczba");
+	exception(ex.ValueOutOfRange)
+	stdout.put("Wartosc z poza zakresu");
+endtry;
+
+end trzy;

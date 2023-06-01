@@ -1,0 +1,58 @@
+tfoot,
+thead {
+    background: #0000a0;
+    color: #ffffff;
+    font-size: 120%
+}
+
+td,
+th {
+    border: 1pt solid #000040;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.orders {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order__card__missing {
+    background-color: lightgrey;
+    border-radius: 20px;
+    border: 3px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 0px;
+}
+
+.order__card {
+    background-color: yellowgreen;
+    border-radius: 20px;
+    border: 3px solid green;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 0px;
+}
+
+.map-container{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    }
+    .map-container iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+    }

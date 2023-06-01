@@ -1,0 +1,91 @@
+program lab6zad1;
+	
+	#include("stdlib.hhf");
+
+static //deklaracje zmiennych
+	i: int32;
+	j: int32;
+	tab: int32[4,8]:=[
+		1,2,3,4,5,6,7,8,
+		9,10,11,12,13,14,15,16,
+		17,18,19,20,21,22,23,24,
+		25,26,27,28,29,30,31,32
+		];
+	tab1: char[4,5]; //ta tablica jest pusta gdyz uzupelniona jest automatycznie w programie
+	a: int32;
+	b: int32;
+	c: int32;
+	Tab3w:	int32[3,4,5]:=[
+		111,112,113,114,115,
+		121,122,123,124,125,
+		131,132,133,134,135,
+		141,142,143,144,145,
+		
+		211,212,213,214,215,
+		221,222,223,224,225,
+		231,232,233,234,235,
+		241,242,243,244,245,
+		
+		311,312,313,314,315,
+		321,322,323,324,325,
+		331,332,333,334,335,
+		341,342,343,344,345,
+	];
+	
+	
+begin lab6zad1;
+	
+	//polecenie 1
+	stdout.put( "Podaj wartosc i: " ); //instrukcja
+	stdin.get(i);//wczytanie zmiennej
+	stdout.put("Podaj wartosc j: " );  //instrukcja
+	stdin.get(j);//wczytanie zmiennej
+	dec(i); //zmiejszenie wprowadzonych indeksow
+	dec(j); //zmiejszenie wprowadzonych indeksow
+	mov(i,ebx); //skopjowanie zmniejszonego indeksu do rejestru
+	intmul(8,ebx); //pomnozenie wartosci przez 8 
+	add(j,ebx); //dodanie zmiejszonego indeksu do rejestru
+	stdout.put(tab[ebx*4],nl); //wypisanie tablicy
+	
+	
+	//polecenie 3 (modyfikacja polecenia 2)
+	mov(97,al); //wartosc malego "a" w asci
+	for(mov(0,ebx);ebx<20;add(1,ebx))do //petla 
+		mov(( type char al), tab1[ebx]); //wypelnienie tablicy znamiem
+		inc(al); //inkrementacja
+	endfor;
+	
+	mov(0,al); //petla
+	for(mov(0,ebx);ebx<20;add(1,ebx))do
+	inc(al); //inkrementacja
+	stdout.put(tab1[ebx], " "); //wypisanie tabeli
+	if(al==4) then //warunek na nl 
+		stdout.put(nl);
+		mov(0,al);
+	endif;
+	endfor;
+	
+	//programie 4
+	stdout.put("Podaj warstwe: "); //instrukcja
+	stdin.get(a);//wczytanie zmiennej
+	stdout.put("Podaj wiersz: "); //instrukcja
+	stdin.get(b);//wczytanie zmiennej
+	stdout.put("Podaj kolumne: "); //instrukcja
+	stdin.get(c);//wczytanie zmiennej
+	
+	dec(a); //zmiejszenie wprowadzonych indeksow
+	dec(b); //zmiejszenie wprowadzonych indeksow
+	dec(c); //zmiejszenie wprowadzonych indeksow
+	
+	mov(a,ebx); //skopjowanie dec(a) do rejestru
+	intmul(20,ebx); //pomnozenie rejestru przez ilosc wierszy i kolumn
+	
+	mov(b, eax); //skopjowanie dec(b) do rejestru 
+	intmul(5,eax); //pomnozenie rejestru przez ilosc wierszy
+	add(eax,ebx); //dodanie rejestow	
+	
+	add(c,ebx); //dodanie wieszy do rejestru
+	
+	stdout.put(Tab3w[ebx*4]); //wypisanie odopwowiedniej kolumny
+	
+end lab6zad1;

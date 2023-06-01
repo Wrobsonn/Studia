@@ -1,0 +1,98 @@
+#define F_CPU 1000000UL
+
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avr/delay.h>
+
+char buffer[4] = {
+	0, 0, 0, 0,
+};
+
+ISR(TIMER0_COMP_vect) {
+	if ((PIND & 0b00000001) == 0) {
+		if (buffer[0] < 2) {
+			buffer[0]++;
+		}
+	} else {
+		buffer[0] = 0;
+	}
+	
+	if ((PIND & 0b00000010) == 0) {
+		if (buffer[1] < 2) {
+			buffer[1]++;
+		}
+		} else {
+		buffer[1] = 0;
+	}
+
+	if ((PIND & 0b00000100) == 0) {
+		if (buffer[2] < 2) {
+			buffer[2]++;
+		}
+		} else {
+		buffer[2] = 0;
+	}
+	
+	if ((PIND & 0b00001000) == 0) {
+		if (buffer[3] < 2) {
+			buffer[3]++;
+		}
+		} else {
+		buffer[3] = 0;
+	}
+	
+	PORTA ^= 0b00010000;
+}
+
+int main(void) {
+	// CTC mode
+	TCCR0 |= 1 << WGM01;
+	TCCR0 &= ~(1 << WGM00);
+
+	// Max point point
+	// 100ms = 0.1/(1/1000000*1024) = 97.65
+	// 255 - 0.1/(1/1000000*1024) = 157
+	OCR0 = 98;
+
+	// clk/1024
+	TCCR0 |= 1 << CS02;
+	TCCR0 &= ~(1 << CS01);
+	TCCR0 |= 1 << CS00;
+	
+	DDRD = 0b00001111;
+	PORTD = 0b00001111;
+	
+	DDRA = 0b11111111;
+
+	// Flagi
+	TIMSK |= 1 << OCIE0;
+	TIFR |= 1 << OCF0;
+
+	sei();
+
+	while (1) {
+		if (buffer[0] == 2) {
+			PORTA |= 0b00000001;
+		} else {
+			PORTA &= ~(0b00000001);
+		}
+		
+		if (buffer[1] == 2) {
+			PORTA |= 0b00000010;
+		} else {
+			PORTA &= ~(0b00000010);
+		}
+		
+		if (buffer[2] == 2) {
+			PORTA |= 0b00000100;
+		} else {
+			PORTA &= ~(0b00000100);
+		}
+		
+		if (buffer[3] == 2) {
+			PORTA |= 0b00001000;
+		} else {
+			PORTA &= ~(0b00001000);
+		}
+	}
+}

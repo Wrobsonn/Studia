@@ -1,0 +1,18 @@
+var student: [Student] = [] //tablica klasy
+
+
+class StudentNaErasmusie : Student{ //klasa dziedziczaca
+
+    var kursy = [(Int, String)]() // krotka
+
+    init(im: String, nz: String, rok:Int,ind : Int , kier: String, rokst: Int, ocena: [Double], uczelniaZaGranica: String, dataRozpoczecia: Date, kursy: [(Int, String)]) {
+        self.uczelniaZaGranica = uczelniaZaGranica
+        self.dataRozpoczecia = dataRozpoczecia
+        self.kursy = kursy
+        super.init(im: im, nz: nz, rok:rok,ind : ind , kier: kier, rokst: rokst, ocena: ocena)
+    } //konstruktor
+
+enum Name { //typ wyliczeniowy
+case name1
+case name2
+}

@@ -1,0 +1,58 @@
+/**
+
+                            Online Swift Compiler.
+                Code, Compile, Run and Debug Swift script online.
+Write your code in this editor and press "Run" button to execute it.
+
+*/
+
+
+//zad 1
+var tab: [Double] = Array(repeating: 1.0, count: 12)
+for i in tab {
+print(i)
+}
+
+//zad 2
+
+var tab1: [Int] = []
+
+for i in 0...10{
+    tab1.append(Int.random(in: 1..<100))
+}
+for i in tab1{
+print(i)
+}
+print("Podaj liczbe")
+var a = Int(readLine()!)!
+tab1.removeFirst()
+tab1.insert(a, at: 0)
+tab1.insert(a, at: Int.random(in: 0..<10))
+//zad 3
+print("Podaj ilosc elementow tablicy")
+var n = Int(readLine()!)!
+var tab2: [Int] = []
+
+for i in 0...n{
+    print("Podaj \(i) element")
+    let el = Int(readLine()!)!
+    tab2.append(el)
+}
+print("Podaj pierwsza wartosc indeksu")
+let first = Int(readLine()!)!
+print("Podaj ostatnia wartosc indeksu")
+let last = Int(readLine()!)!
+if(tab2[0] == first){
+    print("Pierwszy element to \(first)")
+}
+else{
+    print("Nie jest to pierwszy element")
+}
+if(tab2[n-1] == last){
+    print("Ostatni element to \(last)")
+}
+else{
+    print("Nie jest to ostatni element")
+}
+
+//zad 4

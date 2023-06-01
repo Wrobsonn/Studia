@@ -1,0 +1,42 @@
+#define F_CPU 1000000UL
+
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avr/delay.h>
+
+static unsigned char hundreds = 0;
+
+ISR(TIMER0_COMP_vect) {
+	if (++hundreds == 10) {
+		hundreds = 0;
+
+		// Toggle LED
+		PORTA ^= 0b00000001;
+	}
+}
+
+int main(void) {
+	// CTC mode
+	TCCR0 |= 1 << WGM01;
+	TCCR0 &= ~(1 << WGM00);
+
+	// Max point point
+	// 100ms = 0.1/(1/1000000*1024) = 97.65
+	// 255 - 0.1/(1/1000000*1024) = 157
+	OCR0 = 98;
+
+	// clk/1024
+	TCCR0 |= 1 << CS02;
+	TCCR0 &= ~(1 << CS01);
+	TCCR0 |= 1 << CS00;
+	
+	DDRA = 0b11111111;
+
+	// Flagi
+	TIMSK |= 1 << OCIE0;
+	TIFR |= 1 << OCF0;
+
+	sei();
+
+	while (1) {}
+}

@@ -1,0 +1,25 @@
+program eoln;
+
+#include( "stdlib.hhf" );
+
+begin eoln;
+
+stdout.put( "Wprowadz krotki wiersz tekstu: " ); //komunikat
+stdin.flushInput(); //wymuszenie każdorazowego wczytania nowego wiersza danych 
+
+repeat //procedura powtarzania
+stdin.getc(); //pobranie znaku
+stdout.putc(al); //wypisanie litery
+if((al >= 65) && (al <= 89)) then //warunek na duza litere 
+	add(32,al); //zamiana duzej na mala 
+	stdout.put(" = "); 
+	stdout.putc(al); //wypisanie malej litery
+elseif((al >= 97) && (al <= 122)) then //warunek na mala litere
+	sub(32,al); //zamiana malej na duza 
+	stdout.put(" = ");
+	stdout.putc(al); //wypisanie nowej 
+endif;
+stdout.put(nl); //wypisanie nowej linijki
+until( stdin.eoln() ); //napotkanie pusteog znaku
+
+end eoln;

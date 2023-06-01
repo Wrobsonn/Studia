@@ -1,0 +1,36 @@
+program lab3zad2;
+
+#include ("stdlib.hhf");
+
+static //deklaracja zmiennych
+	a: real32:= -4.97660e-2;
+	b: real32:= 562.3456e1;
+	c: real32:= 3.14e15;
+	
+begin lab3zad2;
+
+stdout.put(nl,"Zmienna 1",nl); //komunikat
+stdout.put("Procedura stdout.putr32: "); //komunikat
+stdout.putr32(a,10,4,'@'); //uzycie putr32
+stdout.put(nl,"Procedura stdout.pute32: "); //komunikat
+stdout.pute32(a,10); //uzycie pute32
+stdout.put(nl,"Procedura stdout.put postac dziesietna: ",a:15:10,nl); //komunikat, wypisanie liczby systemem dziestnym
+stdout.put("Procedura stdout.put postac wykladnicza: ",a,nl); //komunikat, wypisanie liczby systemem wykladniczym
+
+stdout.put(nl,"Zmienna 2",nl); //komunikat
+stdout.put("Procedura stdout.putr32: "); //komunikat
+stdout.putr32(b,10,4,'@'); //uzycie putr32
+stdout.put(nl,"Procedura stdout.pute32: "); //komunikat
+stdout.pute32(b,10); //uzycie pute32
+stdout.put(nl,"Procedura stdout.put postac dziesietna: ",b:20:10,nl); //komunikat, wypisanie liczby systemem dziestnym
+stdout.put("Procedura stdout.put postac wykladnicza: ",b,nl); //komunikat, wypisanie liczby systemem wykladniczym
+
+stdout.put(nl,"Zmienna 3",nl); //komunikat
+stdout.put("Procedura stdout.putr32: "); //komunikat
+stdout.putr32(c,25,4,'@'); //uzycie putr32
+stdout.put(nl,"Procedura stdout.pute32: "); //komunikat
+stdout.pute32(c,10); //pute32
+stdout.put(nl,"Procedura stdout.put postac dziesietna: ",c:35:10,nl); //komunikat, wypisanie liczby systemem dziestnym
+stdout.put("Procedura stdout.put postac wykladnicza: ",c); //komunikat, wypisanie liczby systemem wykladniczym
+
+end lab3zad2;

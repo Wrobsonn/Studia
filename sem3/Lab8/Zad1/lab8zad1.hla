@@ -1,0 +1,32 @@
+program z1;
+
+	#include ("stdlib.hhf");
+
+static
+
+	tab: int32[256];
+	i: int32 := 1;
+
+procedure zero; //deklaracja procedury
+begin zero; //rozpoczecie procedury
+	for (mov(ebx,ecx); ecx<256; inc(ecx)) do
+	mov(0,tab[ecx*4]); //przypisnie wartosci 0 do tablicy
+	exitif( ecx >= 150 ) zero; //zamkniecie warunkowe procedury
+	endfor;
+end zero; //koniec procedury
+
+begin z1;
+	mov(100,ebx);
+	for (mov(0,ecx); ecx<256; inc(ecx)) do
+	mov(i,tab[ecx*4]);//przypisanie wartosci do tablicy
+	inc(i);
+	endfor; 
+	for (mov(0,ecx);ecx<256;inc(ecx)) do
+		stdout.put(tab[ecx*4],' ')//wyswietlanie tablicy
+	endfor; 
+	zero();
+	stdout.newln();
+	for (mov(0,ecx);ecx<256;inc(ecx)) do
+		stdout.put(tab[ecx*4],' ')//wyswietlanie tablicy po procedurze
+	endfor; 
+end z1;

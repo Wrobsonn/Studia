@@ -1,0 +1,19 @@
+program trzy;
+
+#include ("stdlib.hhf");
+	
+begin trzy;
+
+stdout.put("Podaj wartosc w systemie szesnastkowym "); //komunikat
+stdin.get(ax); //przypisanie wartosci do rejestrtu
+stdout.put("Podana wartosc ",ax,"H w zapisie dziesietnym to "); //wypisanie
+stdout.puti16(ax); //zamiana bez danych bez uzycia mov
+stdout.put(" ",nl); //utworzenie nowej lini
+
+stdout.put("Podaj wartosc w systemie 16 ");
+stdin.geth32(); //uzycie funkcji geth32
+stdout.put("Wartosc z rejestrtu EAX ",eax,nl); //wypisanie	
+stdout.put("wartosc zmiennej ") //wypisanie
+stdout.puth32(eax); // wypisanie rejsetru (zamiast uzywac mov i przypisac do zmiennej wartosc rejestrtu mozna uzyc  funkcji puthn())
+
+end trzy;

@@ -1,0 +1,26 @@
+program polecenie3;
+#include("stdlib.hhf")
+
+	
+procedure tekst(n:char);
+@returns("eax");
+	begin tekst;
+		if((n<91&&n>64)||(n>96&&n<123)) then
+			mov(1,eax);
+		else
+			mov(0,eax);
+		endif;
+	end tekst;
+	
+begin polecenie3;
+
+	stdout.put("podaj znak ");
+	stdin.getc();
+	
+	if(tekst(al)== 1) then
+		stdout.put("to jest litera alfabetu");
+	else
+		stdout.put("to nie jest litera alfabetu");
+	endif;
+
+end polecenie3;

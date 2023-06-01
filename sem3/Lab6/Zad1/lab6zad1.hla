@@ -1,0 +1,54 @@
+program lab6zad1;
+	
+	#include("stdlib.hhf");
+	
+static
+	zmienna1 :int32;
+	tab1: int8[10] := [0,1,2,3,4,5,6,7,8,9];
+	tab2: int32[10] := 10 dup [1];
+	zmienna2: int32;
+	zmienna3: int8;
+	
+begin lab6zad1;
+	
+	stdout.put("Podaj zmienna "); //instrukcja
+	stdin.get(zmienna1); //wprowadzenie zmiennej
+	stdout.put("Adres zmiennej pierwszej wynosi: ",&zmienna1,nl); //instrukcja
+	mov(&zmienna1, EAX); //skopjowanie adresu do rejestru
+	mov([EAX],al); //przypisanie adresu z rejestru do drugiego rejestru
+	stdout.put("Wartosc zmiennej wynosi: "); //instrukcja
+	stdout.puti8(al); //wypisanie wartosci 
+	stdout.put(nl); //new line
+	
+	stdout.put("Podaj indeks tablicy: "); //instrukcja
+	stdin.get(zmienna2); //wczytanie zmiennej
+	mov(zmienna2, eax); //przypisanie zmiennej do rejestru
+	stdout.put(tab1[eax],nl); //odczytanie danego indeksu tablicy
+	
+	stdout.put(nl,"Tablica 1",nl); //instrukcja
+	for(mov(0,eax);eax<10;add(1,eax))do //petla
+		stdout.put(tab1[eax]," "); //wypisanie tablicy po indeksach
+	endfor; 
+	
+	stdout.put(nl,"Tablica 2",nl); //instrukcja
+	for(mov(0,ebx);ebx<10;add(1,ebx))do //petla
+		stdout.put(tab2[ebx*4]," "); //wypisanie ta po indeksach
+	endfor; 
+	
+	
+	stdout.put(nl,"Ktory element skopiowac "); //instrukcja
+	stdin.get(zmienna3); //wczytanie zmiennaj 
+	mov(zmienna3,al); //przypisanie zmiennej do rejestru
+	sub(1,al); //odjecie 1 od rejestru
+	mov(al,zmienna3); //przypisanie rejestru do zmiennej
+	mov((type int32 zmienna3),ebx); //zmiana typu zmiennej i przypisanie do rejestru
+	mov(tab1[eax],al); //przypisanie wartosci z wybranego indeksu do rejestru
+	mov(al, zmienna3); //przypisanie rejestru do zmiennej
+	mov((type int32 zmienna3),tab2[ebx*4]); //zmiana  typu zmiennej i przypisanie do odpowiedniego indeksu
+	
+	stdout.put(nl,"Tablica 2 po skopiowaniu",nl); //instrukcja
+	for(mov(0,ebx);ebx<10;add(1,ebx))do //petla
+		stdout.put(tab2[ebx*4]," ");//wypisanie tablicy
+	endfor;
+	
+end lab6zad1;

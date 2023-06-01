@@ -1,0 +1,83 @@
+import Foundation
+//zad 1
+var f1=0
+var f2=1
+var sum = 0
+
+print("Któy wyraz chcesz policzyć")
+var n = Int(readLine()!)!
+
+if (n == 0){
+    print("\(n+1) wyraz ciagu wynosi \(f1)")
+}
+else if (n == 1){
+    print("\(n+1) wyraz ciagu wynosi \(f2)")
+}
+else{
+    var i=0
+    while i < n{
+        sum = f1+f2
+        f1=f2
+        f2=sum
+        i+=1
+}
+    print("\(n+1) wyraz ciagu wynosi \(sum)")
+}
+//zad2 
+print("Podaj liczbe")
+var b = Int(readLine()!)!
+var spr = 0
+
+for i in 2...(b-1){
+    if( b%i==0){
+        spr = 1
+    }
+}
+if(spr == 1){
+    print("\(b) nie jest liczba pierwsza")
+}
+else{
+    print("\(b) jest liczba pierwsza")
+}
+//zad 3
+var c: Int?
+var geo=0
+
+var str: String?
+repeat{
+print("Podaj liczbę dwucyfrową: ")
+str = readLine()
+c = Int(str!)
+} while(c == nil) || ( (c! < 100) || (c! > 999))
+
+for i in 0...2{
+    geo+=c!%10
+    c=(c!-c!%10)/10
+}
+//zad 4
+print("Podaj ciag znakow")
+var znak1 = String(readLine()!)!
+print("Podaj ciag znakow")
+var znak2 = String(readLine()!)!
+var spr1=0
+if(znak1.count == znak2.count){
+    for i in 0...znak1.count{
+        if(znak1[i]==znak2[(znak1.count-i-1)]){
+            
+        }
+        else{
+        spr1=1    
+        }
+    }
+    if(spr1==1){
+        print("nie jest to palindrom")
+    }
+    else{
+        print("jest to palindrom")
+    }
+}
+else{
+    print("nie jest to palindrom")
+}
+
+//zad 5

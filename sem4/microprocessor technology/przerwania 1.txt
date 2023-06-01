@@ -1,0 +1,39 @@
+#define F_CPU 1000000UL
+
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <avr/delay.h>
+
+int main(void) {
+	if (1) {
+		// Zbocze opadajace (press down)
+		MCUCR |= 1 << ISC01;
+		MCUCR &= ~(1 << ISC00);
+		
+		MCUCR |= 1 << ISC11;
+		MCUCR &= ~(1 << ISC10);
+	} else {
+		// Zbocze rosnace (press up)
+		MCUCR |= 1 << ISC11;
+		MCUCR |= 1 << ISC10;
+		
+		MCUCR |= 1 << ISC01;
+		MCUCR |= 1 << ISC00;
+	}
+	
+	// Flagi
+	GICR = 1 << INT0 | 1 << INT1;
+	
+	// Przyciski
+	DDRD = 0 << PD2 | 0 << PD3;
+	DDRA = 1 << PA0 | 1 << PA1;
+	
+	PORTD |= 1 << PD2 | 1 << PD3;
+	
+	sei();
+	
+	while (1) {
+		// Testowanie przyciskow
+		// PORTA = ((PIND & 0b00000100) == 0 && 1) || ((PIND & 0b00001000) == 0 && 1);
+	}
+}

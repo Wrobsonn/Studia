@@ -1,0 +1,52 @@
+program lab2zad2; //nazwa programu
+
+#include ("stdlib.hhf"); //deklaracja biblioteki
+
+static	//deklaracja zmiennych
+	a:int8 :=10;
+	b:int8 :=40;
+	c:int8 :=40;
+
+begin lab2zad2; //rozpoczecie programu
+	
+	mov(0,al); //przypisanie wartosci zero do rejestru
+	add(a,al); //dodanie a do rejestru
+	
+	while(a>0) do // petla while
+		stdout.put(a:5);
+		sub(1,al);
+		mov(al,a);
+	endwhile; //koniec while
+	
+	mov(0,al);
+	mov(b,ah);
+	
+	stdout.put(nl,nl,nl,"Wypisanie wartosci za pomoca petli while i for:",nl);	
+	
+	while(b>0) do //poczatek while
+		
+		for(mov(0,al);al<5;add(1,al))do //poczatek for
+			stdout.put(b:2	," "); 	
+			sub(1,ah);
+			mov(ah,b);
+		endfor; //koniec for
+		stdout.put(nl);
+	endwhile; //koniec while
+	
+	mov(0,al);
+	mov(c,ah);
+	
+	stdout.put(nl,nl,"Wypisanie wartosci za pomoca petli while i warunku if:",nl);
+	while(c>0)do //poczatek while
+		
+		if(al==5)then //if + warunek
+			mov(0,al);
+			stdout.put(nl);
+		endif; //koniec if
+		stdout.put(c:2," ");
+		add(1,al);
+		sub(1,ah);
+		mov(ah,c);		
+	endwhile; //koniec while
+	
+end lab2zad2; //zakonczenie programu

@@ -1,0 +1,33 @@
+program lab2zad1; //nazwa programu
+
+#include ("stdlib.hhf"); //deklaracja biblioteki
+
+static	//deklaracja zmiennych
+	a:int8 :=-7;
+	b:int16 :=-277;
+	c:int32	:=-	66000;
+	
+
+begin lab2zad1; //rozpoczecie programu
+	
+	stdout.put("Zmienne poczatkowe:",nl,a,nl,b,nl,c,nl); //wypisanie zmiennych
+
+	mov(0,al); //przypisanie zmienej zero do rejestru
+	sub(a,al); //odjecie od 0 zmiennec a
+	mov(al,a); //przypisanie rejestru do zmiennej a
+
+	mov(0,ax); //przypisanie zmienej zero do rejestru
+	sub(b,ax); //odjecie od 0 zmiennec b
+	mov(ax,b); //przypisanie rejestru do zmiennej b
+
+	mov(0,eax); //przypisanie zmienej zero do rejestru
+	sub(c,eax); //odjecie od 0 zmiennec c
+	mov(eax,c);	//przypisanie rejestru do zmiennej c
+	
+	stdout.put("Zmienne po zmianie znaku:",nl,a,nl,b,nl,c,nl); //wypisanie zmiennych po zamianie
+	
+	add(666,eax); //dodanie wartosci do rejestru
+	mov(eax,c); //przypisanie rejestru do zmiennej c
+	
+	stdout.put("Wynik dodawania 666 + 66000 to :",c);
+end lab2zad1; //zakonczenie programu

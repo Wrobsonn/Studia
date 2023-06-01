@@ -1,0 +1,32 @@
+program lab3zad2;
+
+#include ("stdlib.hhf");
+
+begin lab3zad2;
+
+stdout.put(nl,"Podaj wielka litere :");
+stdin.getc();
+mov(al,ah);
+if((al >= 65) && (al <= 89)) then 
+	add(32,al);
+	stdout.putc(al);
+else
+	stdout.put("Nieprawidlowy znak");
+endif;
+stdout.put(nl,"To samo zadanie przy użyciu not :"); 
+if(ah < 65) then 
+not(a); 
+endif; 
+if(ah > 90) then 
+not(a); 
+endif;
+
+stdout.put(nl,nl); 
+
+if(a==00) then 
+	add(32,ah);
+	stdout.putc(ah);
+else
+	stdout.put("Nieprawidlowy znak"); 
+endif; 
+end lab3zad2;

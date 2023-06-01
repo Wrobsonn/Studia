@@ -1,0 +1,31 @@
+program trzy;
+
+#include ("stdlib.hhf");
+
+static //deklaracja zmiennych
+	a: int8;
+	
+begin trzy;
+
+stdout.put("Podaj liczbe z zakresu -128, 127 "); //komunikat
+stdin.get(a); //wpisanie zmiennej
+
+stdout.put(nl,"Instrukcja rozszerzenia");
+mov(a,al);
+cbw();
+stdout.put(nl,"Wprowadzono: ",a," ");
+stdout.puth8(al);
+stdout.put(nl,"Rozszerzenie do 16 bit: ",a," ");
+stdout.puth16(ax);
+cwde();
+stdout.put(nl,"Rozszerzenie do 32 bit: ",a," ");
+stdout.puth32(eax);
+
+stdout.put(nl,nl,"Instrukcja kopiowania");
+movsx(a,bx);
+stdout.put(nl,"Rozszerzenie do 16 bit: ",a," ");
+stdout.puth16(bx);
+movsx(a,ebx);
+stdout.put(nl,"Rozszerzenie do 32 bit: ",a," ");
+stdout.puth32(ebx);
+end trzy;

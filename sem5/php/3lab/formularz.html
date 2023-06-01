@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title> Formularze </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+
+</head>
+
+<body>
+    <div id="kontener">
+        <div id="baner">
+            <h1>Formularz</h1>
+        </div>
+       
+        <div id="tresc">
+            <form method="GET" action="odbierz2.php">
+                <h4>Zamawiam tutorial z języka:</h4>
+                <p><input name="jezyki[]" type="checkbox"  value="PHP"/>PHP
+                    <input name="jezyki[]" type="checkbox"  value="C"/>C
+                    <input name="jezyki[]" type="checkbox"  value="C++"/>C++
+                    <input name="jezyki[]" type="checkbox"  value="Java"/>Java
+                    <input name="jezyki[]" type="checkbox"  value="XLS"/>XLS
+                    <input name="jezyki[]" type="checkbox"  value="CSS"/>CSS
+                    <input name="jezyki[]" type="checkbox"  value="bash"/>bash
+                    <input name="jezyki[]" type="checkbox"  value="Python"/>Python
+                    <input name="jezyki[]" type="checkbox"  value="C#"/>C#
+                    
+                </p>
+                <h4>Sposób zapłaty:</h4>
+                <p><input name="zaplata" id="zaplata" type="radio" value="euro" />eurocard
+                    <input name="zaplata" type="radio" value="visa" />visa<br/>
+                    <input name="zaplata" type="radio" value="przelew" />przelew bankowy
+                    <br/>
+                    
+                    <input type="submit" value=" Wyślij " />
+                    <input type="reset" value=" Anuluj " />
+                    
+                </p>
+            </form>
+
+        </div>
+        <div id="stopka"> &copy;JW </div>
+    </div>
+</body>
+
+</html>

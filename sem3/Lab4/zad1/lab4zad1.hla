@@ -1,0 +1,33 @@
+program trzy;
+
+#include ("stdlib.hhf");
+
+static //deklaracja zmiennych
+	a: int8;
+	b: int8;
+	
+begin trzy;
+
+stdout.put("Podaj liczbe z zakresu -128, 127 "); //komunikat
+stdin.get(a); //wpisanie zmiennej
+stdout.put(nl,"Szesnastkowo: ");
+stdout.puth8(a);
+mov(0,al);
+mov(a,al);
+not(al);
+mov(al,b);
+stdout.put(nl,"Po inwersji bitow ");
+stdout.puth8(b);
+add(1,al);
+mov(al,b);
+stdout.put(nl,"Po dodaniu jednosci : ");
+stdout.puth8(b);
+stdout.put(nl,"Dziesietnie : ",b);
+stdout.put(nl,nl,nl,"Negacja");
+mov(a,al);
+neg(al);
+mov(al,a);
+stdout.put(nl,"Po dodaniu jednosci : ");
+stdout.puth8(a);
+stdout.put(nl,"Dziesietnie : ",a);
+end trzy;

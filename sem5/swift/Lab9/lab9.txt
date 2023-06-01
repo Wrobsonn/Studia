@@ -1,0 +1,277 @@
+import Foundation
+
+
+
+
+
+print("zad1")
+
+struct liczZespolona {
+
+    var rzecz: Double
+
+    var uro: Double
+
+}
+
+
+
+
+
+var l1 = liczZespolona(rzecz:  8.23, uro: 12.3)
+
+var l2 = liczZespolona(rzecz:  7.23, uro: 1.3)
+
+
+
+print("suma wynosi \(l1.rzecz+l2.rzecz) + \(l1.uro+l2.uro)j")
+
+print("roznica wynosi \(l1.rzecz-l2.rzecz) + \(l1.uro-l2.uro)j")
+
+print("iloczyn wynosi \(l1.rzecz*l1.uro-l2.rzecz*l2.uro) + \(l1.rzecz*l2.uro+l2.rzecz*l1.uro)j")
+
+
+
+print("zad2")
+
+
+
+struct rzutOszczepem {
+
+    var id : Int
+
+    var p: Double
+
+    var d: Double
+
+    var t: Double
+
+}
+
+
+
+var zawodnicy:[rzutOszczepem]=[]
+
+zawodnicy.append(rzutOszczepem(id:1,p:10,d:11,t:32))
+
+zawodnicy.append(rzutOszczepem(id:2,p:16,d:11,t:32))
+
+zawodnicy.append(rzutOszczepem(id:3,p:13,d:11,t:32))
+
+zawodnicy.append(rzutOszczepem(id:4,p:11,d:11,t:32))
+
+
+
+var sr: [Double] = Array(repeating: 1.0, count: 4)
+
+var ind1 = 0
+
+var ind2 = 0
+
+
+
+for i in 0..<4{
+
+    sr[i]=(zawodnicy[i].p+zawodnicy[i].d+zawodnicy[i].t)/3
+
+}
+
+var max=sr[0]
+
+var min=sr[0]
+
+
+
+for i in 1..<4{
+
+    if(max<sr[i])
+
+    {
+
+        ind1=i
+
+        max=sr[i]
+
+    }
+
+    if(min>sr[i]){
+
+        ind2=i
+
+        min=sr[i]
+
+    }
+
+}
+
+
+
+
+
+print("\(zawodnicy[ind1])")
+
+
+
+zawodnicy.remove(at:ind2)
+
+
+
+print("zad3")
+
+var car: Set<String> = ["Fiat","Toyoya","Nissan","BMW","AUDI","Merc"]
+
+print(car)
+
+
+
+var marka = readLine()!
+
+
+
+if let marka = car.remove("\(marka)") {
+
+print("Można usunąć \(marka)")
+
+}
+
+else {
+
+print("Element do usunięcia nie istnieje")
+
+}
+
+
+
+
+
+print("zad4")
+
+var student: [Int: String] = [:]
+
+
+
+for i in 0..<5
+
+{
+
+    
+
+    print("Podaj nazwisko")
+
+    student[i]=readLine()!
+
+}
+
+
+
+print("Podaj nazwisko")
+
+var naz=readLine()!
+
+print("Podaj id")
+
+var id=Int(readLine()!)!
+
+
+
+if let naz = student.updateValue(naz, forKey: id) {
+
+print("Zmodyfikowano \(naz)")
+
+} else {
+
+print("Brakuje szukanego elementu")
+
+}
+
+
+
+print("Podaj nazwisko")
+
+naz=readLine()!
+
+print("Podaj id")
+
+id=Int(readLine()!)!
+
+
+
+if let naz = student.removeValue(forKey: id) {
+
+print("Usunięto \(naz)")
+
+} else {
+
+print("Brakuje elementu do usunicia")
+
+}
+
+
+
+
+
+
+
+struct lot {
+
+    var wylot: [Int:String] = [:]
+
+    var docelowe: [Int:String] = [:]
+
+    var czas: Int
+
+}
+
+
+
+var loty:[lot] = []
+
+
+
+print("podaj liczbe lotow")
+
+var n=Int(readLine()!)!
+
+
+
+var nazwaLotu:String
+
+for _ in 0..<n
+
+{
+
+    loty.append(lot(wylot:[Int(readLine()!)!:readLine()!],docelowe: [Int(readLine()!)!:readLine()!],czas:Int(readLine()!)!))
+
+}
+
+print(loty)
+
+var srednia = 0.0
+
+for i in 0..<n{
+
+srednia += Double(loty[i].czas)
+
+}
+
+srednia = srednia/Double(n)
+
+
+
+for i in 0..<n{
+
+    if(Double(loty[i].czas) > srednia){
+
+        print(loty[i])}
+
+    if(Double(loty[i].czas) < srednia){
+
+        loty.remove(at:i)
+
+}
+
+}
+
+
+
+print(loty)

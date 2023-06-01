@@ -1,0 +1,35 @@
+#include("stdlib.hhf")
+
+procedure dodawanie(n:int32;b:int32);
+	begin dodawanie;
+		mov(n,eax);
+		add(b,eax);
+		stdout.put(" Wynik dodawania tych liczb to ",eax);
+	end dodawanie;
+	
+	
+procedure odejmowanie(n:int32;b:int32);
+	begin odejmowanie;
+		mov(n,eax);
+		sub(b,eax);
+		stdout.put(" Wynik odejmowania tych liczb to ",eax);
+	end odejmowanie;
+
+	procedure dzielenie(n:int32;b:int32);
+	begin dzielenie;
+		if(b==0) then
+			stdout.put("Dzielenie przez 0");
+		else
+			mov(n,eax);
+			mov(b,ebx);
+			div(ebx,edx:eax);
+			stdout.put(" Iloraz liczb to : ",eax);
+		endif;
+	end dzielenie;
+
+procedure mnozenie(n:int32;b:int32);
+	begin mnozenie;
+		mov(n,eax);
+		intmul(b,eax);
+		stdout.put(" Wynik mnozenia tych liczb to ",eax);
+	end mnozenie;

@@ -1,0 +1,6 @@
+name:Jan;age:14;country:UK;mail:Jan@kowalski.com;jezyki:C,C++;zaplata:visa
+name:Jan;age:14;country:UK;mail:Jan@kowalski.com;jezyki:C,C++,Java;zaplata:visa
+name:Jan;age:67;country:UK;mail:Jhony@wp.pl;jezyki:Php,JavaScript,Python;zaplata:eurocard
+name:Weronika;age:25;country:UK;mail:weronika@polska.pl;jezyki:Java;zaplata:eurocard
+name:Jakun;age:12;country:UK;mail:Jan@kowalski.com;jezyki:Php,JavaScript;zaplata:eurocard
+name:Jan;age:-21;country:UK;mail:Jan@kowalski.com;jezyki:Java;zaplata:visa

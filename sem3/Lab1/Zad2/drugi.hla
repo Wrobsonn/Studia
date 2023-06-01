@@ -1,0 +1,18 @@
+program drugi; //nazwa programu
+
+#include ("stdlib.hhf"); //deklaracja biblioteki
+
+static	//deklaracja zmiennych
+	zmienna1:int8 :=9;
+	zmienna2:int8;
+	prawda: boolean :=true;
+	falsz: boolean := false;
+
+begin drugi; //rozpoczecie programu
+
+	stdout.put("Podaj zmienna "); //wyswietlenie napisu w cudzyslowie
+	stdin.get(zmienna2); //komenda wpisanaia zmiennej z klawiatury
+	stdout.put("Zmienna stala ",zmienna1,nl,"Zmienna wprowadzona ",zmienna2,nl); //wypisanie wszystkiego
+	stdout.put("Prawda ",prawda,nl,"Falsz ",falsz,nl); 
+
+end drugi; //zakonczenie programu

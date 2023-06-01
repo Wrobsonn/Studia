@@ -1,0 +1,38 @@
+program trzeci; //nazwa programu
+
+#include ("stdlib.hhf"); //deklaracja biblioteki
+
+static	//deklaracja zmiennych
+	a:int8 :=-7;
+	b:int8 :=6;
+	c:int16	;
+	//d:int8;
+
+begin trzeci; //rozpoczecie programu
+	
+	stdout.put(a,nl,b,nl);
+	mov(0,al); //przypisanie al pustej wartosci;
+	mov(a,al); //przypisanie al wartosci -7
+	sub(b,al); //roznica -7-6
+	mov(al,a); //przeniesienie al=-13 do zmiennej a
+	stdout.put("roznica liczb a i b ",a,nl);
+	add(12,al);
+	mov(al,a);
+	stdout.put("(a-b)+12=",a,nl);
+	stdout.put("Podaj liczbe z zakresu od -128 do 127: ")
+	stdin.get(c);
+	stdout.put("Wprowadzono liczbe ",c,nl);
+	mov(0,ax);
+	sub(c,ax);
+	if((ax>=-128) || (ax<=127)) then // zrobienie wartunku, aby mozna bylo podac wiekasza zmienna , lecz zamienic ja tylko dla danego zakresu
+	mov(0,ax);
+	sub(c,ax);
+	mov(ax,c);
+	stdout.put("Liczba po zamianie ",c);
+	else 
+	stdout.put("Liczba z poza zakresu zamiany");
+	endif;
+		
+	//stdin.get(d) można również zadeklarowac zmienna 8 bitowa z przedzialu <-128,127>, lecz po podaniu zmiennej spoza zakresu wystapi błąd
+	
+end trzeci; //zakonczenie programu
