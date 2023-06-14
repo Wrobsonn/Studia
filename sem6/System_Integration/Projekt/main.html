@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Project IS</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
+  <div class="content">
+    <div id="dataContainer">
+      <div class="buttons">
+        <form method="post" action="adddatatodb.php">
+          <input type="submit" name="submit" value="Wypelnij baze danymi" />
+        </form>
+        <form method="post" action="index2.php">
+          <input type="submit" name="submit" value="Przejdz do transmisji" />
+        </form>
+        <form method="post" action="maxskoki.php">
+          <input type="submit" name="submit" value="Przejdz do wykresu" />
+        </form>
+        <form id="Wyloguj">
+          <input type="submit" name="submit" value="Wyloguj" />
+        </form>
+      </div>
+      <form id="comparisonForm">
+        <div class="miasto">
+          <h2>Miasto</h2>
+          <select name="miasto" id="miastoSelect">
+            <option value="Bialystok">Bialystok</option>
+            <option value="Bydgoszcz">Bydgoszcz</option>
+            <option value="Gdansk">Gdansk</option>
+            <option value="Gdynia">Gdynia</option>
+            <option value="Katowice">Katowice</option>
+            <option value="Kielce">Kielce</option>
+            <option value="Krakow">Krakow</option>
+            <option value="Lublin">Lublin</option>
+            <option value="Lodz">Lodz</option>
+            <option value="Olsztyn">Olsztyn</option>
+            <option value="Opole">Opole</option>
+            <option value="Poznan">Poznan</option>
+            <option value="Rzeszow">Rzeszow</option>
+            <option value="Szczecin">Szczecin</option>
+            <option value="Warszawa">Warszawa</option>
+            <option value="Wroclaw">Wroclaw</option>
+            <option value="ZielonaGora">Zielona Gora</option>
+          </select>
+        </div>
+        <div class="rok">
+          <h2>Rok</h2>
+          <select name="rok" id="rokSelect">
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <!-- <option value="2022">2022</option> brak niektorych danych -->
+          </select>
+        </div>
+        <br />
+        <input type="submit" value="Pokaz" />
+      </form>
+      <br />
+      <div id="selectedMiasto"></div>
+      <div id="comparisonTable"></div>
+    </div>
+    <script>
+      $("#Wyloguj").submit(function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        localStorage.clear();
+        window.location.replace("index.html");
+      });
+      $("#comparisonForm").submit(function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        var miasto1 = $("#miastoSelect").val();
+        var rok1 = $("#rokSelect").val();
+
+        $.ajax({
+          url: "cities/read",
+          method: "GET",
+          contentType: "application/json",
+          data: {
+            miasto: miasto1,
+            rok: rok1,
+          },
+          success: function (response) {
+            updateComparisonTable(response);
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+      });
+
+      // Function to update the comparison table
+      function updateComparisonTable(dane) {
+        var kwartaly = ["I", "II", "III", "IV"];
+        var headers = [
+          "Rok",
+          "Kwartal",
+          "Cena",
+          "Stopy procentowe",
+          "Ilosc mieszkan",
+          "Liczba ludnosci na km kwadrat",
+          "Mieszkancy",
+          "Mieszkaniec na mieszkanie",
+          "Powierzchnia",
+          "Uczelnie",
+        ];
+        var miasto = $("#miastoSelect").val();
+        var rok = $("#rokSelect").val();
+
+        if (dane !== undefined) {
+          $("#comparisonTable").empty();
+          $("#selectedMiasto").empty();
+          var table = document.createElement("table");
+          var thead = document.createElement("thead");
+          var tr = document.createElement("tr");
+          headers.forEach(function (key) {
+            var th = document.createElement("th");
+            th.textContent = key;
+            tr.appendChild(th);
+          });
+
+          thead.appendChild(tr);
+          table.appendChild(thead);
+
+          var tbody = document.createElement("tbody");
+          var firstTr = document.createElement("tr");
+          var firstTd = document.createElement("td");
+          var rok = parseInt(rok) || 2013;
+          firstTd.setAttribute("rowspan", "5");
+          firstTd.textContent = rok;
+          firstTr.appendChild(firstTd);
+          tbody.appendChild(firstTr);
+
+          for (var i = (rok - 2013) * 4; i < (rok - 2013) * 4 + 4; i++) {
+            var tr = document.createElement("tr");
+            var td1 = document.createElement("td");
+            td1.textContent = kwartaly[i - (rok - 2013) * 4];
+            tr.appendChild(td1);
+            Object.keys(dane).forEach(function (key) {
+              var row = dane[key];
+
+              if (row.length > 20) {
+                var td2 = document.createElement("td");
+                td2.textContent =
+                  row[i][miasto || "Bialystok"] ?? row[i]["stopa"];
+                tr.appendChild(td2);
+              } else if (i === (rok - 2013) * 4) {
+                var td3 = document.createElement("td");
+                td3.setAttribute("rowspan", "4");
+                if (row[rok - 2013][miasto || "Bialystok"]) {
+                  td3.textContent = row[rok - 2013][miasto || "Bialystok"];
+                } else {
+                  for (var x = 0; x < 17; x++) {
+                    if (row[x]["Miasto"] == miasto) {
+                      td3.textContent = row[x]["Uczelnie"];
+                    }
+                  }
+                }
+                tr.appendChild(td3);
+              }
+            });
+
+            tbody.appendChild(tr);
+          }
+
+          table.appendChild(tbody);
+
+          var h1 = document.createElement("h1");
+          h1.textContent = miasto;
+          var what = document.getElementById("selectedMiasto");
+          what.appendChild(h1);
+          var container = document.getElementById("comparisonTable");
+          container.appendChild(table);
+        }
+      }
+      if (!localStorage.getItem("token")) {
+        window.location.replace("index.html");
+      }
+    </script>
+  </div>
+</body>
+
+</html>

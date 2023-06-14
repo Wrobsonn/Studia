@@ -1,0 +1,6 @@
+{
+    "require": {
+        "doctrine/dbal": "^3.6",
+        "firebase/php-jwt": "^6.5"
+    }
+}

@@ -1,0 +1,70 @@
+[
+  {
+    "Nazwa": "Wroclaw",
+    "ilość uczelni": 25
+  },
+  {
+    "Nazwa": "Bydgoszcz",
+    "ilość uczelni": 7
+  },
+  {
+    "Nazwa": "Lublin",
+    "ilość uczelni": 9
+  },
+  {
+    "Nazwa": "ZielonaGora",
+    "ilość uczelni": 1
+  },
+  {
+    "Nazwa": "Lodz",
+    "ilość uczelni": 17
+  },
+  {
+    "Nazwa": "Krakow",
+    "ilość uczelni": 18
+  },
+  {
+    "Nazwa": "Warszawa",
+    "ilość uczelni": 63
+  },
+  {
+    "Nazwa": "Opole",
+    "ilość uczelni": 3
+  },
+  {
+    "Nazwa": "Rzeszow",
+    "ilość uczelni": 5
+  },
+  {
+    "Nazwa": "Bialystok",
+    "ilość uczelni": 8
+  },
+  {
+    "Nazwa": "Gdansk",
+    "ilość uczelni": 13
+  },
+  {
+    "Nazwa": "Gdynia",
+    "ilość uczelni": 4
+  },
+  {
+    "Nazwa": "Katowice",
+    "ilość uczelni": 11
+  },
+  {
+    "Nazwa": "Kielce",
+    "ilość uczelni": 8
+  },
+  {
+    "Nazwa": "Olsztyn",
+    "ilość uczelni": 3
+  },
+  {
+    "Nazwa": "Poznan",
+    "ilość uczelni": 22
+  },
+  {
+    "Nazwa": "Szczecin",
+    "ilość uczelni": 10
+  }
+]

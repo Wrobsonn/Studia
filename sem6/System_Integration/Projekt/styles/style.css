@@ -1,0 +1,201 @@
+body {
+    font-family: sans-serif;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f3eded;
+}
+
+.content {
+    padding: 5vh;
+    max-width: 80vw;
+    margin: auto;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 20px;
+    margin-top: 7vh;
+    margin-bottom: 2vh;
+}
+
+#loginFormContainer,
+#registerFormContainer {
+    float: left;
+    margin: auto;
+    width: 40%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: auto;
+}
+
+#comparisonForm input {
+    margin-top: 50px;
+}
+
+.createDB {
+    /* float: left; */
+    /* margin: auto; */
+    width: 90%;
+    padding-left: 5%;
+}
+
+input[type=text],
+input[type=password],
+button {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=submit],
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: large;
+}
+
+input[type=submit]:hover,
+button:hover {
+    opacity: 0.8;
+
+}
+
+#dataContainer .buttons {
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+#dataContainer .buttons form input[type=submit] {
+    float: left;
+}
+
+#miastoSelect,
+#rokSelect {
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    font-size: large;
+    background-color: #bbc9c4;
+}
+
+.miasto,
+.rok {
+    float: left;
+    width: 50%;
+}
+
+table {
+    border-width: 20px;
+    border-color: black;
+}
+
+.content .errorinfo label {
+    color: rgb(163, 0, 0);
+    background-color: rgba(255, 0, 0, 0.15);
+}
+
+.content .errorinfo,
+.content .info {
+    border-style: outset;
+    /* border-width: 1px; */
+    /* border-color: rgb(124, 0, 0); */
+}
+
+.dataSelect {
+    display: block;
+    width: 18%;
+    float: left;
+    padding: 1%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.functions,
+.izolation {
+    padding-bottom: 50px;
+}
+
+.functions input {
+    width: 32%;
+    float: left;
+}
+
+.functions input:nth-child(n+2) {
+    margin-left: 2%;
+}
+
+.izolation {
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.izolation input {
+    width: 23%;
+    float: left;
+}
+
+.submits input,
+button {
+    width: 49%;
+    float: left;
+}
+
+button {
+    margin-left: 2%;
+}
+
+#chartContainer {
+    margin-top: 3%;
+    clear: both;
+    float: left;
+    height: 855px;
+}
+
+/* .diffs {
+    margin-top: 100px;
+} */
+
+
+
+
+
+
+
+thead {
+    font-family: sans-serif;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid green;
+    border-collapse: collapse;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
+}
+
+th {
+    background-color: green;
+    color: white;
+    border-width: 0px;
+    border: 1px solid lightgreen;
+    padding: 3vh;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: rgba(144, 238, 144, 0.425);
+}
+
+td {
+    text-align: center;
+    border-right: 1px solid lightgreen;
+    padding: 1vh;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Project IS</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
+  <div class="content">
+    <div id="loginFormContainer">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label>Login:</label>
+        <input type="text" name="login" placeholder="Login" /><br />
+        <label>Haslo:</label>
+        <input type="password" name="password" placeholder="Haslo" /><br />
+        <input type="submit" value="Zaloguj" />
+      </form>
+    </div>
+
+    <div id="registerFormContainer">
+      <h2>Rejestracja</h2>
+      <form id="registerForm">
+        <label>Login:</label>
+        <input type="text" name="login" placeholder="Login" /><br />
+        <label>Haslo:</label>
+        <input type="password" name="password" placeholder="Haslo" />
+        <br />
+        <input type="submit" value="Zarejestruj" />
+      </form>
+    </div>
+    <div class="createDB">
+      <form method="post" action="createdb.php">
+        <input type="submit" name="submit" value="Utworz baze" />
+      </form>
+    </div>
+    <script>
+      // Handle login form submission
+      $("#loginForm").submit(function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        var login = $('#loginForm input[name="login"]').val();
+        var password = $('#loginForm input[name="password"]').val();
+        if (login !== undefined) {
+          if (login.length < 5) {
+            alert("Login musi miec 5 znakow.");
+            return;
+          }
+        }
+        if (password !== undefined) {
+          if (password.length < 8) {
+            alert("Haslo musi miec 8 znakow.");
+            return;
+          }
+        }
+
+        // Make AJAX request to the server for login
+        $.ajax({
+          url: "cities/login",
+          method: "GET",
+          contentType: "application/json",
+          data: {
+            login: login,
+            password: password,
+          },
+          success: function (response) {
+            // Store the JWT token in the browser's local storage
+            console.log(response);
+            localStorage.setItem("token", response.jwt);
+            window.location.replace("main.html");
+          },
+          error: function (xhr, status, error) {
+            console.log(error); // Handle error
+            if (error == "Unauthorized") {
+              alert("Błędne dane logowania.");
+            }
+          },
+        });
+      });
+
+      $("#registerForm").submit(function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        var login = $('#registerForm input[name="login"]').val();
+        var password = $('#registerForm input[name="password"]').val();
+
+        if (login.length < 5) {
+          alert("Login musi mieć conajmniej 5 znaków długości.");
+          return;
+        }
+
+        if (
+          !password.match(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+          )
+        ) {
+          alert(
+            "Haslo musi zawierać conajmniej 1 małą literę, dużą literę, liczbę, znak specjalny oraz składać się z conajmniej 8 znaków."
+          );
+          return;
+        }
+
+        $.ajax({
+          url: "cities/register",
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({
+            login: login,
+            password: password,
+          }),
+          success: function (response) {
+            alert("Poprawnie zarejestrowano. Teraz nalezy sie zalogowac");
+          },
+          error: function (error) {
+            alert(error.responseJSON.message);
+            console.log(error);
+          },
+        });
+      });
+    </script>
+  </div>
+</body>
+
+</html>
